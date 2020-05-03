@@ -84,28 +84,8 @@ It is possible to run run ad hoc commands from Ansible Tower as well.
 
   - Click the **HOSTS** button to change into the hosts view and select the three hosts by ticking the boxes to the left of the host entries.
 
-  - Click **RUN COMMANDS**. In the next screen you have to specify the ad hoc command:
 
-  <table>
-    <tr>
-      <th>Parameter</th>
-      <th>Value</th>
-    </tr>
-    <tr>
-      <td>MODULE</td>
-      <td>MACHINE CREDENTIAL</td>
-    </tr>
-    <tr>
-      <td>ping</td>
-      <td>Workshop Credentials</td>
-    </tr>
-  </table>
-
-  - Click **LAUNCH**, and watch the output.
-
-<hr>
-
-The simple **ping** module doesn’t need options. For other modules you need to supply the command to run as an argument. Try the **command** module to find the userid of the executing user using an ad hoc command.
+Try the **command** module to find the userid of the executing user using an ad hoc command.
 
   <table>
     <tr>
@@ -127,65 +107,6 @@ The simple **ping** module doesn’t need options. For other modules you need to
 > After choosing the module to run, Tower will provide a link to the docs page for the module when clicking the question mark next to "Arguments". This is handy, give it a try.
 
 <hr>
-
-How about trying to get some secret information from the system? Try to print out */etc/shadow*.
-
-<table>
-  <tr>
-    <th>Parameter</th>
-    <th>Value</th>
-  </tr>
-  <tr>
-    <td>MODULE</td>
-    <td>command</td>
-  </tr>
-  <tr>
-    <td>ARGUMENTS</td>
-    <td>cat /etc/shadow</td>
-  </tr>
-</table>
-
-
-> **Warning**
->
-> **Expect an error\!**
-
-Oops, the last one didn’t went well, all red.
-
-Re-run the last ad hoc command but this time tick the **ENABLE PRIVILEGE ESCALATION** box.
-
-As you see, this time it worked. For tasks that have to run as root you need to escalate the privileges. This is the same as the **become: yes** used in your Ansible Playbooks.
-
-## Challenge Lab: Ad Hoc Commands
-
-Okay, a small challenge: Run an ad hoc to make sure the package "tmux" is installed on all hosts. If unsure, consult the documentation either via the web UI as shown above or by running `[ansible@tower ~]$ ansible-doc yum` on your Tower control host.
-
-> **Warning**
->
-> **Solution below\!**
-
-<table>
-  <tr>
-    <th>Parameter</th>
-    <th>Value</th>
-  </tr>
-  <tr>
-    <td>yum</td>
-    <td>command</td>
-  </tr>
-  <tr>
-    <td>ARGUMENTS</td>
-    <td>name=tmux</td>
-  </tr>
-  <tr>
-    <td>ENABLE PRIVILEGE ESCALATION</td>
-    <td>✓</td>
-  </tr>
-</table>
-
-> **Tip**
->
-> The yellow output of the command indicates Ansible has actually done something (here it needed to install the package). If you run the ad hoc command a second time, the output will be green and inform you that the package was already installed. So yellow in Ansible doesn’t mean "be careful"…​ ;-).
 
 ----
 **Navigation**

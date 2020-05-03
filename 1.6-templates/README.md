@@ -67,57 +67,6 @@ You have done this a couple of times by now:
 
 You should see how Ansible replaces the variables with the facts it discovered from the system.
 
-## Step 2 - Challenge Lab
-
-Add a line to the template to list the current kernel of the managed node.
-
-  - Find a fact that contains the kernel version using the commands you learned in the "Ansible Facts" chapter.
-
-> **Tip**
->
-> Do a `grep -i` for kernel
-
-  - Change the template to use the fact you found.
-
-  - Run the Playbook again.
-
-  - Check motd by logging in to node1
-
-> **Warning**
->
-> **Solution below\!**
-
-
-  - Find the fact:
-```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m setup|grep -i kernel
-       "ansible_kernel": "3.10.0-693.el7.x86_64",
-```
-
-  - Modify the template `motd-facts.j2`:
-<!-- {% raw %} -->
-```html+jinja
-Welcome to {{ ansible_hostname }}.
-{{ ansible_distribution }} {{ ansible_distribution_version}}
-deployed on {{ ansible_architecture }} architecture
-running kernel {{ ansible_kernel }}.
-```
-<!-- {% endraw %} -->
-
-  - Run the playbook.
-```
-[student1@ansible ~]$ ansible-playbook motd-facts.yml
-```
-
-  - Verify the new message via SSH login to `node1`.
-```
-[student1@ansible ~]$ ssh node1
-Welcome to node1.
-RedHat 8.1
-deployed on x86_64 architecture
-running kernel 4.18.0-147.8.1.el8_1.x86_64.
-```
-
 ----
 **Navigation**
 <br>
