@@ -104,6 +104,10 @@ Try for yourself, the solution is below.
     <td>Workshop Credentials</td>
   </tr>
   <tr>
+    <td>LIMIT</td>
+    <td>web</td>
+  </tr> 
+  <tr>
     <td>OPTIONS</td>
     <td>Enable Privilege Escalation</td>
   </tr>          

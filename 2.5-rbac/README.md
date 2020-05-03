@@ -134,23 +134,6 @@ Now log out of Tower’s web UI and in again as the **wweb** user.
 
 - In the following **Jobs** view have a good look around, note that there where changes to the host (of course…​).
 
-Check the result: execute `curl` again on the control host to pull the content of the webserver on the IP address of `node1` (you could of course check `node2` and `node3`, too):
-
-```bash
-$ curl http://22.33.44.55
-```
-
-Just recall what you have just done: You enabled a restricted user to run an Ansible Playbook
-
-  - Without having access to the credentials
-
-  - Without being able to change the Playbook itself
-
-  - But with the ability to change variables you predefined\!
-
-Effectively you provided the power to execute automation to another user without handing out your credentials or giving the user the ability to change the automation code. And yet, at the same time the user can still modify things based on the surveys you created.
-
-This capability is one of the main strengths of Ansible Tower\!
 
 ----
 **Navigation**

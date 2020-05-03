@@ -197,6 +197,10 @@ Understand the playbook and the output:
   - During execution the task is only listed once, but there are three changes listed underneath it.
 <!-- {% endraw %} -->
 
+```bash
+[student1@ansible ansible-files]$ ansible-playbook loop_users.yml
+```
+
 ----
 **Navigation**
 <br>
