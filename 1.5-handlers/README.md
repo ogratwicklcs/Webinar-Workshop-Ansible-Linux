@@ -161,7 +161,7 @@ curl: (7) Failed connect to 22.33.44.55:80; Connection refused
 <h1>This is a production webserver, take care!</h1>
 </body>
 ```
-```
+
 ## Step 3 - Simple Loops
 
 Loops enable us to repeat the same task over and over again. For example, lets say you want to create multiple users. By using an Ansible loop, you can do that in a single task. Loops can also iterate over more than just basic lists. For example, if you have a list of users with their coresponding group, loop can iterate over them as well. Find out more about loops in the [Ansible Loops](https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html) documentation.
