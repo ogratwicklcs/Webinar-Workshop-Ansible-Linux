@@ -34,6 +34,9 @@ To implement a conditional, the `when` statement must be used, followed by the c
 | \>=  | true if the left hand side is greater or equal to the right hand side. |
 | \<   | true if the left hand side is lower than the right hand side.          |
 | \< = | true if the left hand side is lower or equal to the right hand side.   |
+| \in  | Operator is used to check if a value exists in a sequence or not       |
+
+
 
 For more on this, please refer to the documentation: <http://jinja.pocoo.org/docs/2.10/templates/>
 
@@ -67,11 +70,11 @@ Next create the file `ftpserver.yml` on your control host in the `~/ansible-file
   hosts: all
   become: yes
   tasks:
-    - name: Install FTP server when host in ftpserver group
-      yum:
-        name: vsftpd
-        state: latest
-      when: inventory_hostname in groups["ftpserver"]
+  - name: Install FTP server when host in ftpserver group
+    yum:
+      name: vsftpd
+      state: latest
+    when: inventory_hostname in groups["ftpserver"]
 ```
 
 > **Tip**
@@ -103,8 +106,8 @@ As a an example, let’s write a Playbook that:
 First we need the file Ansible will deploy, let’s just take the one from node1. Remember to replace the IP address shown in the listing below with the IP address from your individual `node1`.
 
 ```
-[student<X>@ansible ansible-files]$ scp 11.22.33.44:/etc/httpd/conf/httpd.conf ~/ansible-files/files/.
-student<X>@11.22.33.44's password:
+[student<X>@ansible ansible-files]$ scp node1:/etc/httpd/conf/httpd.conf ~/ansible-files/files/.
+student<X>@node1 password:
 httpd.conf             
 ```
 
@@ -137,12 +140,10 @@ So what’s new here?
 <hr>
 
 Run the Playbook. We didn’t change anything in the file yet so there should not be any `changed` lines in the output and of course the handler shouldn’t have fired.
+  - Let's create some configuration drift in our cluster by:
+```bash
+[student1@ansible ansible-files]$ ansible node1 -m lineinfile -a 'path=/etc/httpd/conf/httpd.conf regexp="^Listen 80" line="Listen 8080"' -b 
 
-  - Now change the `Listen 80` line in `/etc/httpd/conf/httpd.conf` to:
-
-```ini
-Listen 8080
-```
 
   - Run the Playbook again. Now the Ansible’s output should be a lot more interesting:
 
@@ -153,15 +154,15 @@ Listen 8080
 Apache should now listen on port 8080. Easy enough to verify:
 
 ```bash
-[student1@ansible ansible-files]$ curl http://22.33.44.55
+[student1@ansible ansible-files]$ ansible-playbook httpd_conf.yml
+[student1@ansible ansible-files]$ curl node2
 curl: (7) Failed connect to 22.33.44.55:80; Connection refused
-[student1@ansible ansible-files]$ curl http://22.33.44.55:8080
+[student1@ansible ansible-files]$ curl node2:8080
 <body>
 <h1>This is a production webserver, take care!</h1>
 </body>
 ```
-Feel free to change the httpd.conf file again and run the playbook.
-
+```
 ## Step 3 - Simple Loops
 
 Loops enable us to repeat the same task over and over again. For example, lets say you want to create multiple users. By using an Ansible loop, you can do that in a single task. Loops can also iterate over more than just basic lists. For example, if you have a list of users with their coresponding group, loop can iterate over them as well. Find out more about loops in the [Ansible Loops](https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html) documentation.
@@ -176,14 +177,14 @@ To show the loops feature we will generate three new users on `node1`. For that,
   become: yes
 
   tasks:
-    - name: Ensure three users are present
-      user:
-        name: "{{ item }}"
-        state: present
-      loop:
-         - dev_user
-         - qa_user
-         - prod_user
+  - name: Ensure three users are present
+    user:
+      name: "{{ item }}"
+      state: present
+    loop:
+        - dev_user
+        - qa_user
+        - prod_user
 ```
 <!-- {% endraw %} -->
 
@@ -196,56 +197,6 @@ Understand the playbook and the output:
 
   - During execution the task is only listed once, but there are three changes listed underneath it.
 <!-- {% endraw %} -->
-
-## Step 4 - Loops over hashes
-
-As mentioned loops can also be over lists of hashes. Imagine that the users should be assigned to different additional groups:
-
-```yaml
-- username: dev_user
-  groups: ftp
-- username: qa_user
-  groups: ftp
-- username: prod_user
-  groups: apache
-```
-
-The `user` module has the optional parameter `groups` to list additional users. To reference items in a hash, the `{{ item }}` keyword needs to reference the subkey: `{{ item.groups }}` for example.
-
-Let's rewrite the playbook to create the users with additional user rights:
-
-<!-- {% raw %} -->
-```yaml
----
-- name: Ensure users
-  hosts: node1
-  become: yes
-
-  tasks:
-    - name: Ensure three users are present
-      user:
-        name: "{{ item.username }}"
-        state: present
-        groups: "{{ item.groups }}"
-      loop:
-        - { username: 'dev_user', groups: 'ftp' }
-        - { username: 'qa_user', groups: 'ftp' }
-        - { username: 'prod_user', groups: 'apache' }
-
-```
-<!-- {% endraw %} -->
-
-Check the output:
-
-  - Again the task is listed once, but three changes are listed. Each loop with its content is shown.
-
-Verify that the user `dev_user` was indeed created on `node1`:
-
-```bash
-[student<X>@ansible ansible-files]$ ansible node1 -m command -a "id dev_user"
-node1 | CHANGED | rc=0 >>
-uid=1002(dev_user) gid=1002(dev_user) Gruppen=1002(dev_user),50(ftp)
-```
 
 ----
 **Navigation**
