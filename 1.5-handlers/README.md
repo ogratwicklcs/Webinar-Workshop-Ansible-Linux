@@ -34,7 +34,7 @@ To implement a conditional, the `when` statement must be used, followed by the c
 | \>=  | true if the left hand side is greater or equal to the right hand side. |
 | \<   | true if the left hand side is lower than the right hand side.          |
 | \< = | true if the left hand side is lower or equal to the right hand side.   |
-| \in  | Operator is used to check if a value exists in a sequence or not       |
+| in  | Operator is used to check if a value exists in a sequence or not       |
 
 
 
@@ -138,12 +138,11 @@ So what’s new here?
 
   - The "handlers" section defines a task that is only run on notification.
 <hr>
+  -  Now change the `Listen 80` line in ~/ansible-files/files/httpd.conf:
 
-Run the Playbook. We didn’t change anything in the file yet so there should not be any `changed` lines in the output and of course the handler shouldn’t have fired.
-  - Let's create some configuration drift in our cluster by:
-```bash
-[student1@ansible ansible-files]$ ansible node1 -m lineinfile -a 'path=/etc/httpd/conf/httpd.conf regexp="^Listen 80" line="Listen 8080"' -b 
-
+```ini
+Listen 8080
+```
 
   - Run the Playbook again. Now the Ansible’s output should be a lot more interesting:
 
