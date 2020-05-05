@@ -67,7 +67,7 @@ You have done this a couple of times by now:
 
   - Login to node1 via SSH and check the message of the day content.
 ```bash
-[student<X>@ansible ansible-files]$ssh node1
+[student<X>@ansible ansible-files]$ ssh node1
 ```
 
   - Log out of node1.
@@ -81,6 +81,6 @@ You should see how Ansible replaces the variables with the facts it discovered f
 ----
 **Navigation**
 <br>
-[Previous Exercise](../1.5-handlers) - [Next Exercise](../1.7-role)
+[Previous Exercise](../1.5-handlers) - [Next Exercise](../2.1-intro)
 
 [Click here to return to the Ansible for Red Hat Enterprise Linux Workshop](../README.md#section-1---ansible-engine-exercises)
