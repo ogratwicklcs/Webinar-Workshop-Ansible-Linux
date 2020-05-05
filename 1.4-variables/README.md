@@ -141,15 +141,15 @@ The Playbook should copy different files as index.html to the hosts, use `curl` 
 node1 ansible_host=11.22.33.44
 node2 ansible_host=22.33.44.55
 node3 ansible_host=33.44.55.66
-[student<X>@ansible ansible-files]$ curl http://11.22.33.44
+[student<X>@ansible ansible-files]$ curl node1
 <body>
 <h1>This is a development webserver, have fun!</h1>
 </body>
-[student1@ansible ansible-files]$ curl http://22.33.44.55
+[student1@ansible ansible-files]$ curl node2
 <body>
 <h1>This is a production webserver, take care!</h1>
 </body>
-[student1@ansible ansible-files]$ curl http://33.44.55.66
+[student1@ansible ansible-files]$ curl node3
 <body>
 <h1>This is a development webserver, have fun!</h1>
 </body>

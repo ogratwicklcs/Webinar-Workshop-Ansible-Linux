@@ -47,7 +47,8 @@ Next we need a playbook to use this template. In the `~/ansible-files/` director
   hosts: node1
   become: true
   tasks:
-    - template:
+    - name: Deploy Jinja2 Template
+      template:
         src: motd-facts.j2
         dest: /etc/motd
         owner: root

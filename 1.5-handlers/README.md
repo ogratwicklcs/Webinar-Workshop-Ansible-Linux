@@ -84,6 +84,8 @@ Next create the file `ftpserver.yml` on your control host in the `~/ansible-file
 Run it and examine the output. The expected outcome: The task is skipped on node1, node3 and the ansible host (your control host) because they are not in the ftpserver group in your inventory file.
 
 ```bash
+[student<X>@ansible ansible-files]$ ansible-playbook ftpserver.yml
+
 TASK [Install FTP server when host in ftpserver group] *******************************************
 skipping: [ansible]
 skipping: [node1]
