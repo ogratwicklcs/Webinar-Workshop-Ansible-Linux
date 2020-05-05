@@ -244,7 +244,7 @@ On the control node as your student user edit the file `~/ansible-files/apache.y
 ```yaml
 ---
 - name: Apache server installed
-  hosts: all
+  hosts: web
   become: yes
   tasks:
   - name: latest Apache version installed
