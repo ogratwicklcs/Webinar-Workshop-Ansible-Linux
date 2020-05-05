@@ -61,10 +61,20 @@ You have done this a couple of times by now:
   - Understand what the Playbook does.
 
   - Execute the Playbook `motd-facts.yml`.
+```bash
+[student<X>@ansible ansible-files]$ ansible-playbook motd-facts.yml
+```
 
   - Login to node1 via SSH and check the message of the day content.
+```bash
+[student<X>@ansible ansible-files]$ssh node1
+```
 
   - Log out of node1.
+```bash
+[student<X>@ansible ansible-files]$ exit
+```
+
 
 You should see how Ansible replaces the variables with the facts it discovered from the system.
 
