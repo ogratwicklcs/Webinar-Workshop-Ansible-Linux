@@ -1,7 +1,5 @@
 # Workshop Exercise - Writing Your First Playbook
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table of Contents
 
 - [Objective](#objective)
@@ -58,12 +56,7 @@ There are some important concepts:
 >
 > The ordering of the contents within a Playbook is important, because Ansible executes plays and tasks in the order they are presented.
 
-A Playbook should be **idempotent**, so if a Playbook is run once to put the hosts in the correct state, it should be safe to run it a second time and it should make no further changes to the hosts.
-
 > **Tip**
->
-> Most Ansible modules are idempotent, so it is relatively easy to ensure this is true.
-
 
 ## Step 2 - Creating a Directory Structure and File for your Playbook
 
@@ -77,10 +70,6 @@ Enough theory, it’s time to create your first Ansible Playbook. In this lab yo
 
 This Playbook makes sure the package containing the Apache web server is installed on `node1`.
 
-There is a [best practice](http://docs.ansible.com/ansible/playbooks_best_practices.html) on the preferred directory structures for playbooks.  We strongly encourage you to read and understand these practices as you develop your Ansible ninja skills.  That said, our playbook today is very basic and creating a complex structure will just confuse things.
-
-Instead, we are going to create a very simple directory structure for our playbook, and add just a couple of files to it.
-
 On your control host **ansible**, create a directory called `ansible-files` in your home directory and change directories into it:
 
 ```bash
@@ -88,7 +77,7 @@ On your control host **ansible**, create a directory called `ansible-files` in y
 [student<X>@ansible ~]$ cd ansible-files/
 ```
 
-Add a file called `apache.yml` with the following content. As discussed in the previous exercises, use `vi`/`vim` or, if you are new to editors on the command line, check out the [editor intro](../0.0-support-docs/editor_intro.md) again.
+Add a file called `apache.yml` with the following content. 
 
 ```yaml
 ---
@@ -124,7 +113,7 @@ Now that we've defined the play, let's add a task to get something done. We will
 ```
 > **Tip**
 >
-> Since playbooks are written in YAML, alignment of the lines and keywords is crucial. Make sure to vertically align the *t* in `task` with the *b* in `become`. Once you are more familiar with Ansible, make sure to take some time and study a bit the [YAML Syntax](http://docs.ansible.com/ansible/YAMLSyntax.html).
+> Since playbooks are written in YAML, alignment of the lines and keywords is crucial. Make sure to vertically align the *t* in `task` with the *b* in `become`. 
 
 In the added lines:
 
@@ -137,11 +126,6 @@ In the added lines:
     - `name:` to identify the package name
     - `state:` to define the wanted state of the package
 
-> **Tip**
->
-> The module parameters are individual to each module. If in doubt, look them up again with `ansible-doc`.
-
-Save your playbook and exit your editor.
 
 ## Step 3 - Running the Playbook
 
@@ -157,7 +141,7 @@ Now you should be ready to run your playbook:
 [student<X>@ansible ansible-files]$ ansible-playbook apache.yml
 ```
 
-The output should not report any errors but provide an overview of the tasks executed and a play recap summarizing what has been done. There is also a task called "Gathering Facts" listed there: this is an built-in task that runs automatically at the beginning of each play. It collects information about the managed nodes. Exercises later on will cover this in more detail.
+The output should not report any errors but provide an overview of the tasks executed and a play recap summarizing what has been done. 
 
 Connect to `node1` via SSH to make sure Apache has been installed:
 
@@ -167,7 +151,7 @@ Last login: Wed May 15 14:03:45 2019 from 44.55.66.77
 Managed by Ansible
 ```
 
-Use the command `rpm -qe httpd` to verify httpd is installed:
+Use the command `rpm -qi httpd` to verify httpd is installed:
 
 ```
 [student<X>@node1 ~]$ rpm -qi httpd
@@ -201,15 +185,7 @@ On the control host, as your student user, edit the file `~/ansible-files/apache
       state: started
 ```
 
-Again: what these lines do is easy to understand:
-
-  - a second task is created and named
-
-  - a module is specified (`service`)
-
-  - parameters for the module are supplied
-
-Thus with the second task we make sure the Apache server is indeed running on the target machine. Run your extended Playbook:
+With the second task we make sure the Apache server is indeed running on the target machine. Run your extended Playbook:
 
 ```bash
 [student<X>@ansible ansible-files]$ ansible-playbook apache.yml
@@ -217,9 +193,7 @@ Thus with the second task we make sure the Apache server is indeed running on th
 
 Note the output now: Some tasks are shown as "ok" in green and one is shown as "changed" in yellow.
 
-  - Use an Ansible ad hoc command again to make sure Apache has been enabled and started, e.g. with: `systemctl status httpd`.
-
-  - Run the Playbook a second time to get used to the change in the output.
+  - Run the Playbook a second time to get used to the change in the output and note the color change for the second task.
 
 ## Step 5 - Extend your Playbook: Create an web.html
 
@@ -237,7 +211,6 @@ Then create the file `~/ansible-files/files/web.html` on the control node:
 </body>
 ```
 
-You already used Ansible’s `copy` module to write text supplied on the commandline into a file. Now you’ll use the module in your Playbook to actually copy a file:
 
 On the control node as your student user edit the file `~/ansible-files/apache.yml` and add a new task utilizing the `copy` module. It should now look like this:
 
@@ -262,7 +235,7 @@ On the control node as your student user edit the file `~/ansible-files/apache.y
       dest: /var/www/html/index.html
 ```
 
-You are getting used to the Playbook syntax, so what happens? The new task uses the `copy` module and defines the source and destination options for the copy operation as parameters.
+The new task uses the `copy` module and defines the source and destination options for the copy operation as parameters.
 
 Run your extended Playbook:
 

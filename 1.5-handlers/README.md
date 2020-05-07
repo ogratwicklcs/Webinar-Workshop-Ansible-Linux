@@ -1,7 +1,5 @@
 # Workshop Exercise - Conditionals, Handlers and Loops
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table of Contents
 
 * [Objective](#objective)
@@ -24,7 +22,7 @@ Three foundational Ansible features are:
 
 Ansible can use conditionals to execute tasks or plays when certain conditions are met.
 
-To implement a conditional, the `when` statement must be used, followed by the condition to test. The condition is expressed using one of the available operators like e.g. for comparison:
+To implement a conditional, the `when` statement must be used The condition is expressed using one of the available operators like e.g. for comparison:
 
 |      |                                                                        |
 | ---- | ---------------------------------------------------------------------- |
@@ -37,8 +35,6 @@ To implement a conditional, the `when` statement must be used, followed by the c
 | in  | Operator is used to check if a value exists in a sequence or not       |
 
 
-
-For more on this, please refer to the documentation: <http://jinja.pocoo.org/docs/2.10/templates/>
 
 As an example you would like to install an FTP server, but only on hosts that are in the "ftpserver" inventory group.
 
@@ -77,10 +73,6 @@ Next create the file `ftpserver.yml` on your control host in the `~/ansible-file
     when: inventory_hostname in groups["ftpserver"]
 ```
 
-> **Tip**
->
-> By now you should know how to run Ansible Playbooks, we’ll start to be less verbose in this guide. Go create and run it. :-)
-
 Run it and examine the output. The expected outcome: The task is skipped on node1, node3 and the ansible host (your control host) because they are not in the ftpserver group in your inventory file.
 
 ```bash
@@ -97,7 +89,7 @@ changed: [node2]
 
 Sometimes when a task does make a change to the system, an additional task or tasks may need to be run. For example, a change to a service’s configuration file may then require that the service be restarted so that the changed configuration takes effect.
 
-Here Ansible’s handlers come into play. Handlers can be seen as inactive tasks that only get triggered when explicitly invoked using the "notify" statement. Read more about them in the [Ansible Handlers](http://docs.ansible.com/ansible/latest/playbooks_intro.html#handlers-running-operations-on-change) documentation.
+Here Ansible’s handlers come into play. Handlers can be seen as inactive tasks that only get triggered when explicitly invoked using the "notify" statement. 
 
 As a an example, let’s write a Playbook that:
 
@@ -146,7 +138,7 @@ So what’s new here?
 Listen 8080
 ```
 
-  - Run the Playbook again. Now the Ansible’s output should be a lot more interesting:
+  - Run the Playbook:
 
       - httpd.conf should have been copied over
 
@@ -166,7 +158,7 @@ curl: (7) Failed connect to 22.33.44.55:80; Connection refused
 
 ## Step 3 - Simple Loops
 
-Loops enable us to repeat the same task over and over again. For example, lets say you want to create multiple users. By using an Ansible loop, you can do that in a single task. Loops can also iterate over more than just basic lists. For example, if you have a list of users with their coresponding group, loop can iterate over them as well. Find out more about loops in the [Ansible Loops](https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html) documentation.
+Loops enable us to repeat the same task over and over again. For example, lets say you want to create multiple users. Loops can also iterate over more than just basic lists. For example, if you have a list of users with their coresponding group, loop can iterate over them as well.
 
 To show the loops feature we will generate three new users on `node1`. For that, create the file `loop_users.yml` in `~/ansible-files` on your control node as your student user. We will use the `user` module to generate the user accounts.
 

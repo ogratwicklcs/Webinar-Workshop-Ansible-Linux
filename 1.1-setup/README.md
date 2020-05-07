@@ -1,7 +1,5 @@
 # Workshop Exercise - Check the Prerequisites
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table of Contents
 
 * [Objective](#objective)
@@ -9,7 +7,6 @@
 * [Your Lab Environment](#your-lab-environment)
 * [Step 1 - Access the Environment](#step-1---access-the-environment)
 * [Step 2 - Working the Labs](#step-2---working-the-labs)
-* [Step 3 - Challenge Labs](#step-3---challenge-labs)
 
 # Objective
 
@@ -80,8 +77,6 @@ Log out of the root account again:
 You might have guessed by now this lab is pretty commandline-centric…​ :-)
 
   - Don’t type everything manually, use copy & paste from the browser when appropriate. But stop to think and understand.
-
-  - All labs were prepared using **Vim**, but we understand not everybody loves it. Feel free to use alternative editors. In the lab environment we provide **Midnight Commander** (just run **mc**, function keys can be reached via Esc-\<n\> or simply clicked with the mouse) or **Nano** (run **nano**). Here is a short [editor intro](../0.0-support-docs/editor_intro.md).
 
 > **Tip**
 >

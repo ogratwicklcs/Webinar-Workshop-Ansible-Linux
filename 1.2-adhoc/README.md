@@ -1,7 +1,5 @@
 # Workshop Exercise - Running Ad-hoc commands
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table of Contents
 
 * [Objective](#objective)
@@ -12,11 +10,11 @@
 * [Step 4 - Listing Modules and Getting Help](#step-4---listing-modules-and-getting-help)
 * [Step 5 - Use the command module:](#step-5---use-the-command-module)
 * [Step 6 - The copy module and permissions](#step-6---the-copy-module-and-permissions)
-* [Challenge Lab: Modules](#challenge-lab-modules)
+
 
 # Objective
 
-For our first exercise, we are going to run some ad-hoc commands to help you get a feel for how Ansible works.  Ansible Ad-Hoc commands enable you to perform tasks on remote nodes without having to write a playbook.  They are very useful when you simply need to do one or two things quickly and often, to many remote nodes.
+Ansible Ad-Hoc commands enable you to perform tasks on remote nodes without having to write a playbook.  
 
 This exercise will cover
 - Locating and understanding the Ansible configuration file (`ansible.cfg`)
@@ -27,7 +25,7 @@ This exercise will cover
 
 ## Step 1 - Work with your Inventory
 
-To use the ansible command for host management, you need to provide an inventory file which defines a list of hosts to be managed from the control node. In this lab the inventory is provided by your instructor. The inventory is an ini formatted file listing your hosts, sorted in groups, additionally providing some variables. It looks like:
+To use the ansible command for host management, you need to provide an inventory file which defines a list of hosts to be managed from the control node. The inventory is an ini formatted file listing your hosts, sorted in groups, additionally providing some variables. It looks like:
 
 ```bash
 [all:vars]
@@ -44,11 +42,12 @@ node3 ansible_host=<Z.Z.Z.Z>
 ansible ansible_host=44.55.66.77
 ```
 
-Ansible is already configured to use the inventory specific to your environment. We will show you in the next step how that is done. For now, we will execute some simple commands to work with the inventory.
+Ansible is already configured to use the inventory specific to your environment. 
 
-To reference inventory hosts, you supply a host pattern to the ansible command. Ansible has a `--list-hosts` option which can be useful for clarifying which managed hosts are referenced by the host pattern in an ansible command.
+Ansible has a `--list-hosts` option which can be useful for clarifying which managed hosts are referenced by the host pattern in an ansible command.
 
-The most basic host pattern is the name for a single managed host listed in the inventory file. This specifies that the host will be the only one in the inventory file that will be acted upon by the ansible command. Run:
+The most basic host pattern is the name of all hosts in the inventory file. 
+Run:
 
 ```bash
 [student<X@>ansible ~]$ ansible all --list-hosts
@@ -61,7 +60,7 @@ The most basic host pattern is the name for a single managed host listed in the 
 
 ## Step 2 - The Ansible Configuration Files
 
-The behavior of Ansible can be customized by modifying settings in Ansible’s ini-style configuration file. Ansible will select its configuration file from one of several possible locations on the control node, please refer to the [documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html).
+The behavior of Ansible can be customized by modifying settings in Ansible’s ini-style configuration file. 
 
 > **Tip**
 >
@@ -88,7 +87,7 @@ retry_files_enabled = False
 inventory = /home/student<X>/lab_inventory/hosts
 ```
 
-There are multiple configuration flags provided. Most of them are not of interest here, but make sure to note the last line: there the location of the inventory is provided. That is the way Ansible knew in the previous commands what machines to connect to.
+There are multiple configuration flags provided, but make sure to note the last line: where the location of the inventory is provided. That is the way Ansible knew in the previous commands what machines to connect to.
 
 Output the content of your dedicated inventory:
 
@@ -108,23 +107,19 @@ node3 ansible_host=33.44.55.66
 ansible ansible_host=44.55.66.77
 ```
 
-> **Tip**
->
-> Note that each student has an individual lab environment. The IP addresses shown above are only an example and the IP addresses of your individual environments are different. As with the other cases, replace **\<X\>** with your actual student number.
-
 ## Step 2 - Ping a host
 
 > **Warning**
 >
 > **Don’t forget to run the commands from the home directory of your student user, `/home/student<X>`. That is where your `.ansible.cfg` file is located, without it Ansible will not know what which inventory to use.**
 
-Let's start with something really basic - pinging a host. To do that we use the Ansible `ping` module. The `ping` module makes sure our target hosts are responsive. Basically, it connects to the managed host, executes a small script there and collects the results. This ensures that the managed host is reachable and that Ansible is able to execute commands properly on it.
+Let's start with something really basic - pinging a host. To do that we use the Ansible `ping` module. The `ping` module makes sure our target hosts are responsive.  
 
 > **Tip**
 >
 > Think of a module as a tool which is designed to accomplish a specific task.
 
-Ansible needs to know that it should use the `ping` module: The `-m` option defines which Ansible module to use. Options can be passed to the specified modul using the `-a` option.
+Ansible needs to know that it should use the `ping` module: The `-m` option defines which Ansible module to use. Options can be passed to the specified module using the `-a` option.
 
 ```bash
 [student<X>@ansible ~]$ ansible web -m ping
@@ -150,8 +145,6 @@ Now let's see how we can run a good ol' fashioned Linux command and format the o
 node1 | CHANGED | rc=0 >>
 uid=1001(student1) gid=1001(student1) Gruppen=1001(student1) Kontext=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 ```
-In this case the module is called `command` and the option passed with `-a` is the actual command to run. Try to run this ad hoc command on all managed hosts using the `all` host pattern.
-
 
 > **Tip**
 >
@@ -181,12 +174,6 @@ As mentioned this produces an **error**:
 The output of the ad hoc command is screaming **FAILED** in red at you. Why? Because user **student\<X\>** is not allowed to write the motd file.
 
 Now this is a case for privilege escalation and the reason `sudo` has to be setup properly. We need to instruct Ansible to use `sudo` to run the command as root by using the parameter `-b` (think "become").
-
-> **Tip**
->
-> Ansible will connect to the machines using your current user name (student\<X\> in this case), just like SSH would. To override the remote user name, you could use the `-u` parameter.
-
-For us it’s okay to connect as `student<X>` because `sudo` is set up. Change the command to use the `-b` parameter and run again:
 
 ```bash
 [student<X>@ansible ~]$ ansible node1 -m copy -a 'content="Managed by Ansible\n" dest=/etc/motd' -b

@@ -1,7 +1,5 @@
 # Workshop Exercise - Using Variables
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table of Contents
 
 * [Objective](#objective)
@@ -12,8 +10,6 @@
 * [Step 3 - Create the Playbook](#step-3---create-the-playbook)
 * [Step 4 - Test the Result](#step-4---test-the-result)
 * [Step 5 - Ansible Facts](#step-5---ansible-facts)
-* [Step 6 - Challenge Lab: Facts](#step-6---challenge-lab-facts)
-* [Step 7 - Using Facts in Playbooks](#step-7---using-facts-in-playbooks)
 
 # Objective
 
@@ -37,8 +33,6 @@ Here comes a variable {{ variable1 }}
 ```
 <!-- {% endraw %} -->
 
-Variables and their values can be defined in various places: the inventory, additional files, on the command line, etc.
-
 The recommended practice to provide variables in the inventory is to define them in files located in two directories named `host_vars` and `group_vars`:
 
   - To define variables for a group "servers", a YAML file named `group_vars/servers.yml` with the variable definitions is created.
@@ -47,12 +41,12 @@ The recommended practice to provide variables in the inventory is to define them
 
 > **Tip**
 >
-> Host variables take precedence over group variables (more about precedence can be found in the [docs](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable)).
+> Host variables take precedence over group variables.
 
 
 ## Step 1 - Create Variable Files
 
-For understanding and practice let’s do a lab. Following up on the theme "Let’s build a web server. Or two. Or even more…​", you will change the `index.html` to show the development environment (dev/prod) a server is deployed in.
+In this lab you will change the `index.html` on your web servers to show the development environment (dev/prod) a server is deployed in.
 
 On the ansible control host, as the `student<X>` user, create the directories to hold the variable definitions in `~/ansible-files/`:
 
@@ -154,10 +148,6 @@ node3 ansible_host=33.44.55.66
 <h1>This is a development webserver, have fun!</h1>
 </body>
 ```
-
-> **Tip**
->
-> If by now you think: There has to be a smarter way to change content in files…​ you are absolutely right. This lab was done to introduce variables, you are about to learn about templates in one of the next chapters.
 
 ## Step 5 - Ansible Facts
 
