@@ -8,7 +8,6 @@
 * [Machine Credentials](#machine-credentials)
 * [Configure Machine Credentials](#examine-machine-credentials)
 * [Run Ad Hoc Commands](#run-ad-hoc-commands)
-* [Challenge Lab: Ad Hoc Commands](#challenge-lab-ad-hoc-commands)
 
 # Objective
 
@@ -22,9 +21,9 @@ Explore and understand the lab environment.  This exercise will cover
 
 ## Examine an Inventory
 
-The first thing we need is an inventory of your managed hosts. This is the equivalent of an inventory file in Ansible Engine. There is a lot more to it (like dynamic inventories) but let’s start with the basics.
+The first thing we need is an inventory of your managed hosts. This is the equivalent of an inventory file in Ansible Engine. 
 
-  - You should already have the web UI open, if not: Point your browser to the URL you were given, similar to **https://student\<X\>.workshopname.rhdemo.io** (replace "\<X\>" with your student number and "workshopname" with the name of your current workshop) and log in as `admin`. The password will be provided by the instructor.
+  - You should already have the web UI open, if not: Point your browser to the URL you were given, similar to **https://student\<X\>.<ID>.rhdemo.io** (replace "\<X\>" with your student number and "\<ID\>" with the name of your current workshop) and log in as `admin`. The password provided with your Lab info.
 
 There will be one inventory, the **Workshop Inventory**. Click the **Workshop Inventory** then click the **Hosts** button
 

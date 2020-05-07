@@ -1,7 +1,5 @@
 # Workshop Exercise - Introduction to Ansible Tower
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table Contents
 
 * [Objective](#objective)
@@ -50,11 +48,10 @@ In this lab you work in a pre-configured lab environment. You will have access t
 | Managed Host 2               | node2          |
 | Managed Host 2               | node3          |
 
-The Ansible Tower provided in this lab is individually setup for you. Make sure to access the right machine whenever you work with it. Ansible Tower has already been installed and licensed for you, the web UI will be reachable over HTTP/HTTPS.
 
 ## Dashboard
 
-Let's have a first look at the Tower: Point your browser to the URL you were given, similar to `https://student<X>.workshopname.rhdemo.io` (replace `<X>` with your student number and `workshopname` with the name of your current workshop) and log in as `admin`. The password will be provided by the instructor.
+Let's have a first look at the Tower: Point your browser to the URL you were given, similar to `https://student<X>.<ID>.rhdemo.io` (replace `<X>` with your student number and `ID` with the name of your current workshop) and log in as `admin`. The password will be provided by the instructor.
 
 The web UI of Ansible Tower greets you with a dashboard with a graph showing:
 

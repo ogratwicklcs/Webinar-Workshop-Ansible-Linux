@@ -1,7 +1,5 @@
 # Workshop Exercise - Workflows
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table Contents
 
 * [Objective](#objective)
@@ -14,17 +12,13 @@
 
 # Objective
 
-The basic idea of a workflow is to link multiple Job Templates together. They may or may not share inventory, Playbooks or even permissions. The links can be conditional:
+The basic idea of a workflow is to link multiple Job Templates together. They may or may not share inventory, Playbooks or even permissions. 
 
-  - if job template A succeeds, job template B is automatically executed afterwards
-
-  - but in case of failure, job template C will be run.
-
-And the workflows are not even limited to Job Templates, but can also include project or inventory updates.
+The workflows are not even limited to Job Templates, but can also include project or inventory updates.
 
 This enables new applications for Ansible Tower: different Job Templates can build upon each other. E.g. the networking team creates playbooks with their own content, in their own Git repository and even targeting their own inventory, while the operations team also has their own repos, playbooks and inventory.
 
-In this lab you’ll learn how to setup a workflow.
+In this lab you’ll learn how to se tup a workflow.
 
 # Guide
 
@@ -308,6 +302,6 @@ You can also execute curl on the control host, pointing it towards the nodes and
 ----
 **Navigation**
 <br>
-[Previous Exercise](../2.5-rbac) - [Next Exercise](../2.7-wrap)
+[Previous Exercise](../2.5-rbac) 
 
 [Click here to return to the Ansible for Red Hat Enterprise Linux Workshop](../README.md#section-2---ansible-tower-exercises)

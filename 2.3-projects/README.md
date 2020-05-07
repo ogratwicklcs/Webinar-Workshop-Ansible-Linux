@@ -1,7 +1,5 @@
 # Workshop Exercise - Projects & job templates
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table Contents
 
 * [Objective](#objective)
@@ -9,8 +7,7 @@
 * [Setup Git Repository](#setup-git-repository)
 * [Create the Project](#create-the-project)
 * [Create a Job Template and Run a Job](#create-a-job-template-and-run-a-job)
-* [Challenge Lab: Check the Result](#challenge-lab-check-the-result)
-* [What About Some Practice?](#what-about-some-practice)
+
 
 # Objective
 
@@ -70,7 +67,7 @@ A Playbook to install the Apache web server has already been committed to the di
 
 > **Tip**
 >
-> Note the difference to other Playbooks you might have written\! Most importantly there is no `become` and `hosts` is set to `all`.
+> Note most importantly there is no `become` and `hosts` is set to `all`.
 
 To configure and use this repository as a **Source Control Management (SCM)** system in Tower you have to create a **Project** that uses the repository
 
@@ -97,12 +94,6 @@ To configure and use this repository as a **Source Control Management (SCM)** sy
     </tr>
   </table>
 
-Now you need the URL to access the repo. Go to the Github repository mentioned above, choose the green **Clone or download** button on the right, click on **Use https** and copy the HTTPS URL.
-
-> **Note**
->
-> If there is no **Use https** to click on, but a **Use SSH**, you are fine: just copy the URL. The important thing is that you copy the URL starting with **https**.
-
  Enter the URL into the Project configuration:
 
  <table>
@@ -120,12 +111,11 @@ Now you need the URL to access the repo. Go to the Github repository mentioned a
    </tr>
  </table>
 
-
 - Click **SAVE**
 
-The new Project will be synced automatically after creation. But you can also do this manually: Sync the Project again with the Git repository by going to the **Projects** view and clicking the circular arrow **Get latest SCM revision** icon to the right of the Project.
 
-After starting the sync job, go to the **Jobs** view: there is a new job for the update of the Git repository.
+The new Project will be synced automatically after creation. To view ouput for **Projects**, click the green circle next to the Project name.
+
 
 ## Create a Job Template and Run a Job
 

@@ -1,7 +1,5 @@
 # Workshop Exercise - Role-based access control
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table Contents
 
 * [Objective](#objective)
@@ -76,14 +74,13 @@ Let’s create a user:
 
 
 
-
     - Confirm password
 
 - Click **SAVE**
 
 ## Ansible Tower Teams
 
-A Team is a subdivision of an organization with associated users, projects, credentials, and permissions. Teams provide a means to implement role-based access control schemes and delegate responsibilities across organizations. For instance, permissions may be granted to a whole Team rather than each user on the Team.
+Teams provide a means to implement role-based access control schemes and delegate responsibilities across organizations. For instance, permissions may be granted to a whole Team rather than each user on the Team.
 
 Create a Team:
 
@@ -101,11 +98,9 @@ Now you can add a user to the Team:
 
 Now click the **PERMISSIONS** button in the **TEAMS** view, you will be greeted with "No Permissions Have Been Granted".
 
-Permissions allow to read, modify, and administer projects, inventories, and other Tower elements. Permissions can be set for different resources.
-
 ## Granting Permissions
 
-To allow users or teams to actually do something, you have to set permissions. The user **wweb** should only be allowed to modify content of the assigned webservers.
+To allow users or teams to actually do something, you have to set permissions. The Team `Web Content` should only be allowed to modify content of the assigned webservers.
 
 Add the permission to use the template:
 
@@ -127,8 +122,7 @@ Add the permission to use the template:
 
 Now log out of Tower’s web UI and in again as the **wweb** user.
 
-- Go to the **Templates** view, you should notice for wweb only the `Create
-  index.html` template is listed. He is allowed to view and launch, but not to edit the Template. Just open the template and try to change it.
+- Go to the **Templates** view, you should notice for wweb only the `Create index.html` template is listed. He is allowed to view and launch, but not to edit the Template. Just open the template and try to change it.
 
 - Run the Job Template by clicking the rocket icon. Enter the survey content to your liking and launch the job.
 

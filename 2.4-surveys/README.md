@@ -1,7 +1,5 @@
 # Exercise - Surveys
 
-**Read this in other languages**: ![uk](../../../images/uk.png) [English](README.md),  ![japan](../../../images/japan.png)[日本語](README.ja.md), ![brazil](../../../images/brazil.png) [Portugues do Brasil](README.pt-br.md).
-
 ## Table Contents
 
 * [Objective](#objective)
@@ -29,20 +27,10 @@ You have installed Apache on all hosts in the job you just run. Now we’re goin
 
 Additionally, the role will also make sure that the Apache configuration is properly set up - in case it got mixed up during the other exercises.
 
-> **Tip**
->
-> The survey feature only provides a simple query for data - it does not support four-eye principles, queries based on dynamic data or nested menus.
 
 ## The Apache-configuration Role
 
 The Playbook and the role with the Jinja template already exist in the Github repository **https://github.com/ansible/workshop-examples** in the directory `rhel/apache`**`.
-
- Head over to the Github UI and have a look at the content: the playbook `apache_role_install.yml` merely references the role. The role can be found in the `roles/role_apache` subdirectory.
-
- - Inside the role, note the two variables in the `templates/index.html.j2` template file marked by `{{…​}}`\.
- - Also, check out the tasks in `tasks/main.yml` that deploy the file from the template.
-
-What is this Playbook doing? It creates a file (**dest**) on the managed hosts from the template (**src**).
 
 The role also deploys a static configuration for Apache. This is to make sure that all changes done in the previous chapters are overwritten and your examples work properly.
 
