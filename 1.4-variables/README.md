@@ -19,7 +19,6 @@ This exercise covers variables, specifically
 - How to use variable delimiters `{{` and `}}`
 - What `host_vars` and `group_vars` are and when to use them
 - How to use `ansible_facts`
-- How to use the `debug` module to print variables to the console window
 
 # Guide
 
