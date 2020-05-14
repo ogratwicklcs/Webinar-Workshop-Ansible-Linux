@@ -184,5 +184,8 @@ $ curl http://22.33.44.55
 Note how the two variables where used by the playbook to create the content of the `index.html` file.
 
 ----
+**Navigation**
+<br>
+[Previous Exercise](../2.3-projects) - [Next Exercise](../2.5-rbac)
 
 [Click here to return to the Ansible for Red Hat Enterprise Linux Workshop](../README.md#section-2---ansible-tower-exercises)
