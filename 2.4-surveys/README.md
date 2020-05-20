@@ -77,7 +77,7 @@ Try for yourself, the solution is below.
   </tr>
   <tr>
     <td>INVENTORY</td>
-    <td>Webserver</td>
+    <td>Workshop Inventory</td>
   </tr>
   <tr>
     <td>Project</td>
