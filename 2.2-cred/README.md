@@ -81,7 +81,7 @@ It is possible to run run ad hoc commands from Ansible Tower as well.
 
   - In the web UI go to **RESOURCES → Inventories → Workshop Inventory**
 
-  - Click the **HOSTS** button to change into the hosts view and select the three hosts by ticking the boxes to the left of the host entries.
+  - Click the **HOSTS** button to change into the hosts view and select the three node hosts by ticking the boxes to the left of the host entries (node1, node2, node3).
 
 
 Try the **command** module to find the userid of the executing user using an ad hoc command.
