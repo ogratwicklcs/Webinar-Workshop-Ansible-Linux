@@ -173,7 +173,7 @@ Before the actual launch the survey will ask for **First Line** and **Second Lin
 
 ```
 Note how the two variables where used by the playbook to create the content of the `index.html` file.
-
+```
 ----
 **Navigation**
 <br>
