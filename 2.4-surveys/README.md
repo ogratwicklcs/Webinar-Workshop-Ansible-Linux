@@ -171,15 +171,6 @@ Before the actual launch the survey will ask for **First Line** and **Second Lin
 >
 > Note how the two survey lines are shown to the left of the Job view as **Extra Variables**.
 
-After the job has completed, check the Apache homepage. In the SSH console on the control host, execute `curl` against the IP address of your `node1`:
-
-```bash
-$ curl http://22.33.44.55
-<body>
-<h1>Apache is running fine</h1>
-<h1>This is survey field "First Line": line one</h1>
-<h1>This is survey field "Second Line": line two</h1>
-</body>
 ```
 Note how the two variables where used by the playbook to create the content of the `index.html` file.
 
