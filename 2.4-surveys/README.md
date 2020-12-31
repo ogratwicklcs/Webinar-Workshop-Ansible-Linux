@@ -48,11 +48,11 @@ Now you create a new Template that includes a survey.
 
 - Configure the template to:
 
-    - Use the `Ansible Workshop Examples` **Project**
+    - Use the `Workshop Project` **Project**
 
     - Use the `apache_role_install.yml` **Playbook**
 
-    - To run on `web`
+    - To run on `web` group
 
     - To run in privileged mode
 
@@ -81,7 +81,7 @@ Try for yourself, the solution is below.
   </tr>
   <tr>
     <td>Project</td>
-    <td>Ansible Workshop Examples</td>
+    <td>Workshop Project</td>
   </tr>  
   <tr>
     <td>PLAYBOOK</td>
@@ -89,7 +89,7 @@ Try for yourself, the solution is below.
   </tr>
   <tr>
     <td>CREDENTIAL</td>
-    <td>Workshop Credentials</td>
+    <td>Workshop Credential</td>
   </tr>
   <tr>
     <td>LIMIT</td>
@@ -188,4 +188,4 @@ Note how the two variables where used by the playbook to create the content of t
 <br>
 [Previous Exercise](../2.3-projects) - [Next Exercise](../2.5-rbac)
 
-[Click here to return to the Ansible for Red Hat Enterprise Linux Workshop](../README.md#section-2---ansible-tower-exercises)
+
