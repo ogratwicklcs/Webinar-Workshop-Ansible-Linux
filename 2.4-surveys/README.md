@@ -52,7 +52,7 @@ Now you create a new Template that includes a survey.
 
     - Use the `apache_role_install.yml` **Playbook**
 
-    - To run on `node1`
+    - To run on `web`
 
     - To run in privileged mode
 

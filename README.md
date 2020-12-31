@@ -46,7 +46,6 @@ If your experience is different in schedulung these workshops, please let us kno
  - [Exercise 2.4 - Surveys](2.4-surveys)
  - [Exercise 2.5 - Role based access control](2.5-rbac)
  - [Exercise 2.6 - Workflows](2.6-workflows)
- - [Exercise 2.7 - Wrap up](2.7-wrap)
 
 ## Supplemental Exercises
 
